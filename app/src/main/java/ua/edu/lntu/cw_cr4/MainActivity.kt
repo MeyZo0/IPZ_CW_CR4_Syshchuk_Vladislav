@@ -85,7 +85,8 @@ fun FirstScreen(navController: NavHostController) {
     Column {
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier,
+            modifier = Modifier.background(Color.LightGray),
+
 
         ) {
             Text(text = "Завдання №1",
@@ -96,6 +97,7 @@ fun FirstScreen(navController: NavHostController) {
                 onCheckedChange = { isChecked ->
                     checkedState1.value = isChecked
                 }
+
             )
         }
         Button(onClick = { navController.navigate("second_screen") }) {
@@ -103,7 +105,7 @@ fun FirstScreen(navController: NavHostController) {
         }
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier,
+            modifier = Modifier.background(Color.LightGray),
 
             ) {
             Text(text = "Завдання №2",
@@ -121,7 +123,7 @@ fun FirstScreen(navController: NavHostController) {
         }
         Row (verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
-            modifier = Modifier,
+            modifier = Modifier.background(Color.LightGray),
 
             ) {
             Text(text = "Завдання №3",
@@ -142,10 +144,11 @@ fun FirstScreen(navController: NavHostController) {
 
 @Composable
 fun SecondScreen(navController: NavHostController) {
-    Column {
-
+    Column() {
+        Text(text = "Деталі Завдання",
+            fontSize = 30.sp)
         Button(onClick = { navController.navigate("first_screen") }) {
-            Text("Перейти до головного меню")
+            Text("Виконано")
         }
     }
 }
@@ -154,19 +157,20 @@ fun SecondScreen(navController: NavHostController) {
 fun ThirdScreen(navController: NavHostController) {
 
     Column {
-
+        Text(text = "Деталі Завдання",
+            fontSize = 30.sp)
         Button(onClick = { navController.navigate("first_screen") }) {
-            Text("Перейти до головного меню")
-        }
+            Text("Виконано")
     }
 }
 @Composable
 fun FourthScreen(navController: NavHostController) {
 
     Column {
-
+        Text(text = "Деталі Завдання",
+            fontSize = 30.sp)
         Button(onClick = { navController.navigate("first_screen") }) {
-            Text("Перейти до головного меню")
+            Text("Виконано")
         }
     }
 }
