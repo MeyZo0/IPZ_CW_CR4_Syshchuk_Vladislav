@@ -13,10 +13,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,6 +29,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import ua.edu.lntu.cw_cr4.ui.theme.IPZ_CW_CR4_Syshchuk_VladislavTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,84 +52,73 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
 fun MainWindow() {
-    Column (horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top,) {
-        Text(
-            text = "Список завдань",
-            fontSize = 30.sp,
-        )
-        LazyColumn(
-            contentPadding = PaddingValues(10.dp),
-            content = {
-                item {
-                    item1()
-                    Spacer(modifier = Modifier.height(20.dp))
-                    item2()
-                    Spacer(modifier = Modifier.height(20.dp))
-                    item3()
-                }
-            }
-        )
+    val navController = rememberNavController()
+
+    NavHost(navController = navController, startDestination = "first_screen") {
+        composable("first_screen") {
+            FirstScreen(navController)
+        }
+        composable("second_screen") {
+            SecondScreen(navController)
+        }
+        composable("third_screen") {
+            ThirdScreen(navController)
+        }
+        composable("fourth_screen") {
+            FourthScreen(navController)
+        }
     }
 }
 
 @Composable
-fun item1 () {
-    Column (modifier = Modifier
-        .background(Color.LightGray)
-        .clip(shape = RoundedCornerShape(6.dp))
-        .padding(15.dp)
-    )
-    {
+fun FirstScreen(navController: NavHostController) {
 
-        Text(
-            text = "10:00",
-            fontSize = 20.sp
-        )
-        Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
-        )
+    Column {
+
+        Button(onClick = { navController.navigate("second_screen") }) {
+            Text("Перейти до завдання 1")
+        }
+        Button(onClick = { navController.navigate("third_screen") }) {
+            Text("Перейти до завдання 2")
+        }
+        Button(onClick = { navController.navigate("fourth_screen") }) {
+            Text("Перейти до завдання 3")
+        }
     }
-
 }
 
 @Composable
-fun item2 () {
-    Column (modifier = Modifier
-        .background(Color.LightGray)
-        .clip(shape = RoundedCornerShape(6.dp))
-        .padding(15.dp)
-    ) {
+fun SecondScreen(navController: NavHostController) {
+    Column {
 
-        Text(
-            text = "12:00",
-            fontSize = 20.sp
-        )
-        Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        )
+        Button(onClick = { navController.navigate("first_screen") }) {
+            Text("Go to Second Screen")
+        }
     }
-
 }
 
 @Composable
-fun item3 () {
-    Column (modifier = Modifier
-        .background(Color.LightGray)
-        .clip(shape = RoundedCornerShape(6.dp))
-        .padding(15.dp)
-    ) {
+fun ThirdScreen(navController: NavHostController) {
 
-        Text(
-            text = "18:00",
-            fontSize = 20.sp
-        )
-        Text(
-            text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        )
+    Column {
+
+        Button(onClick = { navController.navigate("first_screen") }) {
+            Text("Go to Second Screen")
+        }
     }
-
 }
+@Composable
+fun FourthScreen(navController: NavHostController) {
+
+    Column {
+
+        Button(onClick = { navController.navigate("first_screen") }) {
+            Text("Go to Second Screen")
+        }
+    }
+}
+
 
