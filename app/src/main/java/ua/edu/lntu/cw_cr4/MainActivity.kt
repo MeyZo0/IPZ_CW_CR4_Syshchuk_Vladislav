@@ -78,7 +78,9 @@ fun MainWindow() {
 
 @Composable
 fun FirstScreen(navController: NavHostController) {
-    val checkedState = remember { mutableStateOf(false) }
+    val checkedState1 = remember { mutableStateOf(false) }
+    val checkedState2 = remember { mutableStateOf(false) }
+    val checkedState3 = remember { mutableStateOf(false) }
 
     Column {
         Row (verticalAlignment = Alignment.CenterVertically,
@@ -90,9 +92,9 @@ fun FirstScreen(navController: NavHostController) {
                 fontSize =  25.sp
                 )
             Checkbox(
-                checked = checkedState.value,
+                checked = checkedState1.value,
                 onCheckedChange = { isChecked ->
-                    checkedState.value = isChecked
+                    checkedState1.value = isChecked
                 }
             )
         }
@@ -108,9 +110,9 @@ fun FirstScreen(navController: NavHostController) {
                     fontSize =  25.sp
             )
             Checkbox(
-                checked = checkedState.value,
+                checked = checkedState2.value,
                 onCheckedChange = { isChecked ->
-                    checkedState.value = isChecked
+                    checkedState2.value = isChecked
                 }
             )
         }
@@ -126,9 +128,9 @@ fun FirstScreen(navController: NavHostController) {
                 fontSize =  25.sp
             )
             Checkbox(
-                checked = checkedState.value,
+                checked = checkedState3.value,
                 onCheckedChange = { isChecked ->
-                    checkedState.value = isChecked
+                    checkedState3.value = isChecked
                 }
             )
         }
